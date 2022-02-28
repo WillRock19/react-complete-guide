@@ -1,8 +1,9 @@
 import ExpenseItem from "../ExpenseItem";
+import CardContainer from "../CardContainer";
 
 const Expenses = ({ expenses }) => {
   return (
-    <section className="expenses">
+    <CardContainer className="expenses">
       {expenses.map((expense) => {
         return (
           <ExpenseItem
@@ -12,7 +13,7 @@ const Expenses = ({ expenses }) => {
           />
         );
       })}
-    </section>
+    </CardContainer>
   );
 };
 
