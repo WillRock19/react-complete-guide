@@ -43,14 +43,26 @@ const NewExpenseForm = () => {
     setFormData((previousState) => {
       return {
         ...previousState,
-        date: event.value.target,
+        date: event.target.value,
       };
     });
   };
 
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    const newData = {
+      title: formData.title,
+      amount: formData.amount,
+      date: new Date(formData.date),
+    };
+
+    setFormData(initializedForm);
+    console.log(newData);
+  };
+
   return (
     <section className="new-expense">
-      <form className="new-expense-controls">
+      <form className="new-expense-controls" onSubmit={onSubmitHandler}>
         <div className="new-expense-control">
           <label>Title</label>
           <input
@@ -77,6 +89,7 @@ const NewExpenseForm = () => {
             max="2030-12-31"
             value={formData.date}
             onChange={dateChangeHandler}
+            className={formData.date ? "" : "empty-date"}
           />
         </div>
         <div className="new-expense-action">
