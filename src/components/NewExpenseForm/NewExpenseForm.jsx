@@ -1,20 +1,35 @@
 import { useState } from "react";
 
+const initializedForm = () => {
+  return {
+    amount: "",
+    date: "",
+    title: "",
+  };
+};
+
 const NewExpenseForm = () => {
-  const [amount, setAmount] = useState("");
-  const [date, setDate] = useState("");
-  const [title, setTitle] = useState("");
+  const [formData, setFormData] = useState(initializedForm);
 
   const titleChangeHandler = (event) => {
-    setTitle(event.target.value);
+    setFormData({
+      ...formData,
+      title: event.target.value,
+    });
   };
 
   const amountChangeHandler = (event) => {
-    setAmount(event.target.value);
+    setFormData({
+      ...formData,
+      amount: event.target.value,
+    });
   };
 
   const dateChangeHandler = (event) => {
-    setDate(event.value.target);
+    setFormData({
+      ...formData,
+      date: event.value.target,
+    });
   };
 
   return (
@@ -22,7 +37,11 @@ const NewExpenseForm = () => {
       <form className="new-expense-controls">
         <div className="new-expense-control">
           <label>Title</label>
-          <input type="text" value={title} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={formData.title}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense-control">
           <label>Amount</label>
@@ -30,7 +49,7 @@ const NewExpenseForm = () => {
             type="number"
             min="0.01"
             step="0.01"
-            value={amount}
+            value={formData.amount}
             onChange={amountChangeHandler}
           />
         </div>
@@ -40,7 +59,7 @@ const NewExpenseForm = () => {
             type="date"
             min="2000-01-01"
             max="2030-12-31"
-            value={date}
+            value={formData.date}
             onChange={dateChangeHandler}
           />
         </div>
