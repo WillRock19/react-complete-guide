@@ -12,23 +12,39 @@ const NewExpenseForm = () => {
   const [formData, setFormData] = useState(initializedForm);
 
   const titleChangeHandler = (event) => {
-    setFormData({
-      ...formData,
-      title: event.target.value,
+    // This way react guarantees that the state it will use to be updated will be the latest one (in the previous way, since react updates the states asynchronously,
+    // we might end up with a bad state).
+    /* Previous way:
+
+        setFormData({
+          ...formData,
+          title: event.target.value
+        });
+    */
+
+    setFormData((previousState) => {
+      return {
+        ...previousState,
+        title: event.target.value,
+      };
     });
   };
 
   const amountChangeHandler = (event) => {
-    setFormData({
-      ...formData,
-      amount: event.target.value,
+    setFormData((previousState) => {
+      return {
+        ...previousState,
+        amount: event.target.value,
+      };
     });
   };
 
   const dateChangeHandler = (event) => {
-    setFormData({
-      ...formData,
-      date: event.value.target,
+    setFormData((previousState) => {
+      return {
+        ...previousState,
+        date: event.value.target,
+      };
     });
   };
 
