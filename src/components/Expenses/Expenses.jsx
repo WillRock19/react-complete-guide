@@ -5,21 +5,25 @@ import CardContainer from "../CardContainer";
 import DateFilter from "../DateFilter";
 
 const Expenses = ({ expenses }) => {
-  const [dateFiltered, setDateFiltered] = useState("");
+  const [filteredYear, setFilteredYear] = useState("");
 
-  const onDateSelectedHandler = (event) => {
-    setDateFiltered(event.target.value);
+  const onYearSelectedHandler = (event) => {
+    setFilteredYear(event.target.value);
   };
+
+  const filteredList = expenses.filter(
+    (expense) => expense.date.getFullYear().toString() === filteredYear
+  );
 
   return (
     <CardContainer className="expenses">
       <DateFilter
-        minDate={2000}
-        maxDate={2030}
-        selectedOption={dateFiltered}
-        onChangeHanlder={onDateSelectedHandler}
+        minDate={2018}
+        maxDate={2023}
+        selectedOption={filteredYear}
+        onChangeHanlder={onYearSelectedHandler}
       />
-      {expenses.map((expense) => (
+      {filteredList.map((expense) => (
         <ExpenseItem
           key={expense.id}
           expenseTitle={expense.title}

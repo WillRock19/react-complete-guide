@@ -85,8 +85,8 @@ const NewExpenseForm = ({ onAddExpense }) => {
           <label>Date</label>
           <input
             type="date"
-            min="2000-01-01"
-            max="2030-12-31"
+            min="2018-01-01"
+            max="2023-12-31"
             value={formData.date}
             onChange={dateChangeHandler}
             className={formData.date ? "" : "empty-date"}
