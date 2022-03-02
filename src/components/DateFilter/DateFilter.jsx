@@ -15,7 +15,11 @@ const DateFilter = ({ minDate, maxDate, selectedOption, onChangeHanlder }) => {
         <label>Filter by year</label>
         <select value={selectedOption} onChange={onChangeHanlder}>
           {allYearsBetween(minDate, maxDate).map((year) => {
-            return <option value={year.toString()}>{year}</option>;
+            return (
+              <option key={year} value={year.toString()}>
+                {year}
+              </option>
+            );
           })}
         </select>
       </div>

@@ -8,7 +8,7 @@ const initializedForm = () => {
   };
 };
 
-const NewExpenseForm = () => {
+const NewExpenseForm = ({ onAddExpense }) => {
   const [formData, setFormData] = useState(initializedForm);
 
   const titleChangeHandler = (event) => {
@@ -57,7 +57,7 @@ const NewExpenseForm = () => {
     };
 
     setFormData(initializedForm);
-    console.log(newData);
+    onAddExpense(newData);
   };
 
   return (

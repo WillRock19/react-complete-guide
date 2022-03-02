@@ -12,25 +12,22 @@ const Expenses = ({ expenses }) => {
   };
 
   return (
-    <>
+    <CardContainer className="expenses">
       <DateFilter
         minDate={2000}
         maxDate={2030}
         selectedOption={dateFiltered}
         onChangeHanlder={onDateSelectedHandler}
       />
-      <CardContainer className="expenses">
-        {expenses.map((expense) => {
-          return (
-            <ExpenseItem
-              expensetitle={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          );
-        })}
-      </CardContainer>
-    </>
+      {expenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          expenseTitle={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
+    </CardContainer>
   );
 };
 
