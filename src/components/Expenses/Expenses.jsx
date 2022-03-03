@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import DateFilter from "../DateFilter";
 import CardContainer from "../CardContainer";
-import ExpenseItem from "../ExpenseItem";
+import ExpensesChart from "../ExpensesChart";
 import ExpenseList from "../ExpenseList";
 
 const Expenses = ({ expenses }) => {
@@ -24,6 +24,7 @@ const Expenses = ({ expenses }) => {
         selectedOption={filteredYear}
         onChangeHanlder={onYearSelectedHandler}
       />
+      <ExpensesChart expenses={filteredList} />
       <ExpenseList items={filteredList} />
     </CardContainer>
   );
