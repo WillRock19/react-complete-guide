@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Expenses from "./components/Expenses";
+import ExpensesData from "./components/ExpensesData";
 import NewExpenseForm from "./components/NewExpenseForm";
 
 const initialExpenses = [
@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <h2>Starting...</h2>
       <NewExpenseForm onAddExpense={addExpenseHandler} />
-      <Expenses expenses={expenses} />
+      <ExpensesData expenses={expenses} />
     </div>
   );
 }
